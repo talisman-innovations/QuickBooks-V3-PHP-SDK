@@ -206,10 +206,10 @@ class DataService
      * @return $this
      *
      */
-    protected function setupRestHandler($serviceContext)
+    protected function setupRestHandler($serviceContext, $guzzleClient = null)
     {
        if(isset($serviceContext)){
-          $client = ClientFactory::createClient($this->getClientName());
+          $client = ClientFactory::createClient($this->getClientName(), $guzzleClient);
           $this->restHandler = new SyncRestHandler($serviceContext, $client);
        }else{
           throw new SdkException("Can not set the Rest Client based on null ServiceContext.");
@@ -339,10 +339,10 @@ class DataService
      *
      * @return $this
      */
-    public function setClientName($clientName){
+    public function setClientName($clientName, $guzzleClient = null){
        $this->clientName = $clientName;
        $serviceContext = $this->getServiceContext();
-       $this->setupRestHandler($serviceContext);
+       $this->setupRestHandler($serviceContext, $guzzleClient);
        return $this;
     }
 
