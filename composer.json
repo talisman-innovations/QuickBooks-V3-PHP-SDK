@@ -10,6 +10,7 @@
     "require-dev": {
         "phpunit/phpunit": "^5.7"
     },
+    "include-path":["src/XSD2PHP/lib/ZF/1.10.7/"],
     "autoload": {
         "psr-4": {
             "QuickBooksOnline\\API\\": "src/"
